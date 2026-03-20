@@ -12,6 +12,9 @@ import { LuArrowDownUp, LuLayoutGrid, LuList, LuPlus } from "react-icons/lu";
 import { CustomSelect } from "./CustomSelect";
 
 export function FiltersPanel({ width, height, filterOrg, filterPos }) {
+  const safeOrg = Array.isArray(filterOrg) ? filterOrg : [];
+  const safePos = Array.isArray(filterPos) ? filterPos : [];
+
   return (
     <Flex
       w={width}
@@ -35,26 +38,20 @@ export function FiltersPanel({ width, height, filterOrg, filterPos }) {
           colorPalette={"blue"}
           gap={2}
         >
-          <LuArrowDownUp
-            width="15px"
-            height="13px"
-            color="#173DA6"
-          ></LuArrowDownUp>
+          <LuArrowDownUp width="15px" height="13px" color="#173DA6" />
         </IconButton>
+
         <Flex gap="12px">
           <CustomSelect
-            data={{
-              items: [...filterOrg],
-            }}
+            data={{ items: safeOrg }}
             title="Организация"
-          
-          ></CustomSelect>
+          />
+
           <CustomSelect
-            data={{
-              items: [...filterPos],
-            }}
+            data={{ items: safePos }}
             title="Должность"
-          ></CustomSelect>
+          />
+
           <CustomSelect
             data={{
               items: [
@@ -65,72 +62,51 @@ export function FiltersPanel({ width, height, filterOrg, filterPos }) {
               ],
             }}
             title="Регион"
-          ></CustomSelect>
+          />
+
           <Button
             size="md"
             variant="ghost"
             colorPalette="blue"
             w="164px"
             h={10}
-            minW={10}
-            borderRadius={"l2"}
-            paddingTop="2px"
-            paddingBottom="2px"
-            paddingLeft={4}
-            paddingRight={4}
-            gap={2}
+            borderRadius="l2"
             opacity="50%"
-            fontSize={"sm"}
-            fontWeight={"medium"}
-            lineHeight={"20px"}
-            letterSpacing={"0%"}
-            textAlign={"center"}
-            color={"#173da6"}
+            fontSize="sm"
+            fontWeight="medium"
+            color="#173da6"
           >
             Сбросить фильтры
           </Button>
         </Flex>
       </Flex>
-      <Flex
-        gap="12px"
-        h="40px"
-        bgSize={"md"}
-        borderRadius={"8px"}
-        gapX={1_5}
-        gapY={1_5}
-      >
+
+      <Flex gap="12px" h="40px">
         <SegmentGroup.Root
           defaultValue="table"
           h={10}
           w="232px"
           size="md"
           gap={2}
-          bgColor={"#F4F4F5"}
-          borderColor={"#E4E4E7"}
+          bgColor="#F4F4F5"
+          borderColor="#E4E4E7"
         >
-          <SegmentGroup.Indicator bgColor={"#fff"} />
+          <SegmentGroup.Indicator bgColor="#fff" />
           <SegmentGroup.Items
             paddingTop={1}
             paddingBottom={1}
             paddingLeft={4}
             paddingRight={4}
-            borderRadius={"8px"}
-            gap={"10px"}
-            shadow={"sm"}
-            shadowColor={"#18181B1A"}
+            borderRadius="8px"
+            gap="10px"
+            shadow="sm"
             items={[
               {
                 value: "list",
                 label: (
                   <HStack>
                     <LuList width={4} height={4} />
-                    <Text
-                      fontWeight={"normal"}
-                      fontSize={"sm"}
-                      lineHeight={"20px"}
-                      letterSpacing={"0%"}
-                      color={"#000"}
-                    >
+                    <Text fontSize="sm" color="#000">
                       Список
                     </Text>
                   </HStack>
@@ -141,13 +117,7 @@ export function FiltersPanel({ width, height, filterOrg, filterPos }) {
                 label: (
                   <HStack>
                     <LuLayoutGrid width="12px" height="12px" />
-                    <Text
-                      fontWeight={"normal"}
-                      fontSize={"sm"}
-                      lineHeight={"20px"}
-                      letterSpacing={"0%"}
-                      color={"#000"}
-                    >
+                    <Text fontSize="sm" color="#000">
                       Карточки
                     </Text>
                   </HStack>
@@ -156,6 +126,7 @@ export function FiltersPanel({ width, height, filterOrg, filterPos }) {
             ]}
           />
         </SegmentGroup.Root>
+
         <IconButton
           size="md"
           variant="solid"
@@ -164,23 +135,11 @@ export function FiltersPanel({ width, height, filterOrg, filterPos }) {
           h={10}
           minW={10}
           borderRadius="8px"
-          paddingTop="2px"
-          paddingBottom="2px"
-          paddingRight={4}
-          paddingLeft={4}
-          gap={2}
           bgColor="#2563EB"
           color="#fff"
         >
           <LuPlus width={5} height={5} />
-          <Text
-            fontWeight={"medium"}
-            fontSize={"sm"}
-            lineHeight={"20px"}
-            letterSpacing={"0%"}
-            textAlign={"center"}
-            color={"#fff"}
-          >
+          <Text fontSize="sm" fontWeight="medium" color="#fff">
             Создать контакт
           </Text>
         </IconButton>

@@ -14,7 +14,8 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { useState } from "react";
 
 export const ContactTable = ({ data }) => {
-  const initialUsers = [...data];
+  const safeData = Array.isArray(data) ? data : [];
+  const initialUsers = [...safeData];
   const [users, setUsers] = useState(initialUsers);
   const [selection, setSelection] = useState<string[]>([]);
   const [page, setPage] = useState(1);
