@@ -13,34 +13,39 @@ function App() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   async function load() {
+  //     try {
+  //       // 1. Получаем токен
+  //       const auth = await login("demo@demo.ru", "demo!demo");
+  //       const token = auth.access_token;
+
+  //       // 2. Делаем запрос сотрудников
+  //       const res = await axios.get(
+  //         "https://api.corporation.skroy.ru/organization/employee?add_organization_data=true&add_profile_data=true",
+  //         {
+  //           headers: {
+  //             "Project-ID": "2c03471b-7792-4f9a-aa8a-6811810959f0",
+  //             Authorization: `bearer ${token}`,
+  //           },
+  //         }
+  //       );
+
+  //       setData(res.data);
+  //     } catch (err) {
+  //       setData(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+
+  //   load();
+  // }, []);
   useEffect(() => {
-    async function load() {
-      try {
-        // 1. Получаем токен
-        const auth = await login("demo@demo.ru", "demo!demo");
-        const token = auth.access_token;
-
-        // 2. Делаем запрос сотрудников
-        const res = await axios.get(
-          "https://api.corporation.skroy.ru/organization/employee?add_organization_data=true&add_profile_data=true",
-          {
-            headers: {
-              "Project-ID": "2c03471b-7792-4f9a-aa8a-6811810959f0",
-              Authorization: `bearer ${token}`,
-            },
-          }
-        );
-
-        setData(res.data);
-      } catch (err) {
-        setData(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, []);
+  login("demo@demo.ru", "demo!demo")
+    .then((res) => console.log("OK:", res))
+    .catch((err) => console.log("ERR:", err));
+}, []);
 
   if (loading) return <CustomProgress />;
 
