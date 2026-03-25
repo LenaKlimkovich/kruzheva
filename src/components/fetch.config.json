@@ -1,0 +1,12 @@
+
+[
+  {
+    "title": "get list of contacts",
+    "method": "GET",
+    "url": "https://api.corporation.skroy.ru/organization/employee?add_organization_data=true&add_profile_data=true",
+    "headers": {
+      "Project-ID": "2c03471b-7792-4f9a-aa8a-6811810959f0",
+      "Authorization": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsidXNlcl9pZCI6IjVkYzQxYzJjLWRkOGEtNGIzNy04NDRlLTQ1ZTA2MzA0Y2NiZSIsImRldmljZV9pZCI6ImRldmljZV9pZCAod2lwKSIsInVzZXJfaXAiOiJ1c2VyX2lwICh3aXApIiwicHJvZmlsZV9pZCI6Ijg5OGNjZmY0LWJhMTktNGE1Mi1hM2UzLTRiNjMxMDQ3ZTZhOSIsImFjY291bnRfaWQiOiI5ZmUyMDY4Ny00MDM2LTQ4YmEtOTUxZC00NTgwOTIwMTIyODgiLCJwcm9qZWN0X2lkIjoiMmMwMzQ3MWItNzc5Mi00ZjlhLWFhOGEtNjgxMTgxMDk1OWYwIn0sImlhdCI6MTc3NDQ0NDA2MSwiZXhwIjoxNzc0NDg3MjYxfQ.s9Ak_EemVbQT_WTwdssLws2C8K3YzlsvP7QrD4asDf2dBVLJntFNXsqPnrGqgbD3Gnyg0t81YuN6MT6QF3BI0vNv78jijfJwhu5ntiLvVsgeX0JT-xPNTur2FqAJ-woG0Tt5NkD5HbLh5ZzovQ6FtKvjSfFcTfzCkRt1OXp_xXUsWIfJ-gXpmc6q9jLioRVnxqJE9vXGzN-0OzRHVB4s71uKfreWbb9Byi7Gj1b3itnKQfvMcFCBvOWJEqU9zhzXKjXFZf8hetJVD0IMvWb4U2Qy_lZ1kGNM2HjzncR2OcAUSnPelKit7dOB8CEeB2R5NbRoBqIAH87PxJe2c6GJo1dtNoD8fOVlqoG23HbmcUJiHvxp44cWtJej3lqe3bDGCMqrc_tYyHdtepU-B02PAB3UVzHRcWQqatBrkk8Rr7BwkyoPxL9STe36SCKxMoFdAzEUv54hfejUqBFVHcbta93taE0RqhK0S4kM89bexAh9R6U9aXut5NvhBPxYBfYV-emhOT9qIOoAxXtod1e6CDoL3r4FsGXAgzHh0zjylRGM2DhvvLDZW7d_sFwL3KDz1Ho57dKSDFrveYNOe_ZG4ubuoVh9gC43uVm-zf0QqmJeUNFtx5ZW5w3ehi8IgTSKvEErBfJXN2rZgJQJ6sHts-iL8UNbx3l8JMrKNsgeq3k",
+    }
+  }
+]
