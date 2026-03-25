@@ -1,4 +1,3 @@
-import axios from "axios";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { CustomProgress } from "./components/CustomProgress";
@@ -7,45 +6,33 @@ import { Box, Container, Flex } from "@chakra-ui/react";
 import { Page } from "./components/Page";
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
-import { login } from "./api/login";
+import axiosInstance, { authorize } from "./api/axiosInstance";
 
 function App() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   async function load() {
-  //     try {
-  //       // 1. Получаем токен
-  //       const auth = await login("demo@demo.ru", "demo!demo");
-  //       const token = auth.access_token;
-
-  //       // 2. Делаем запрос сотрудников
-  //       const res = await axios.get(
-  //         "https://api.corporation.skroy.ru/organization/employee?add_organization_data=true&add_profile_data=true",
-  //         {
-  //           headers: {
-  //             "Project-ID": "2c03471b-7792-4f9a-aa8a-6811810959f0",
-  //             Authorization: `bearer ${token}`,
-  //           },
-  //         }
-  //       );
-
-  //       setData(res.data);
-  //     } catch (err) {
-  //       setData(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-
-  //   load();
-  // }, []);
   useEffect(() => {
-  login("demo@demo.ru", "demo!demo")
-    .then((res) => console.log("OK:", res))
-    .catch((err) => console.log("ERR:", err));
-}, []);
+    async function load() {
+      try {
+        // 1. Авторизация
+        await authorize();
+
+        // 2. Запрос сотрудников
+        const res = await axiosInstance.get(
+          "/organization/employee?add_organization_data=true&add_profile_data=true"
+        );
+
+        setData(res.data);
+      } catch (err) {
+        setData(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+  }, []);
 
   if (loading) return <CustomProgress />;
 
