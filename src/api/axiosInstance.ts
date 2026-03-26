@@ -4,9 +4,17 @@ import { login } from "./login";
 let accessToken: string | null = null;
 
 export async function authorize() {
-  const auth = await login("demo@demo.ru", "demo!demo");
-  accessToken = auth.data[0].auth_data.access_token;
-  return accessToken;
+ const auth = await login("demo@demo.ru", "demo!demo");
+
+  console.log("LOGIN RESPONSE:", auth);
+
+  const token = auth.data?.[0]?.auth_data?.access_token;
+
+  console.log("TOKEN EXTRACTED:", token);
+
+  accessToken = token;
+
+  return token;
 }
 
 const instance = axios.create({
