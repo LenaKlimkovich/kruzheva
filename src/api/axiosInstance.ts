@@ -5,7 +5,7 @@ let accessToken: string | null = null;
 
 export async function authorize() {
   const auth = await login("demo@demo.ru", "demo!demo");
-  accessToken = auth.access_token;
+  accessToken = auth.data[0].auth_data.access_token;
   return accessToken;
 }
 
@@ -16,25 +16,12 @@ const instance = axios.create({
   },
 });
 
-// Добавляем токен в каждый запрос
+// Интерцептор автоматически подставляет токен в каждый запрос
 instance.interceptors.request.use((config) => {
   if (accessToken) {
-    config.headers.Authorization = `bearer ${accessToken}`;
+    config.headers.Authorization = `Bearer ${accessToken}`;
   }
   return config;
 });
-
-// Перехватываем 401 → обновляем токен → повторяем запрос
-instance.interceptors.response.use(
-  (res) => res,
-  async (error) => {
-    if (error.response?.status === 401) {
-      await authorize(); // получаем новый токен
-      error.config.headers.Authorization = `bearer ${accessToken}`;
-      return instance(error.config); // повторяем запрос
-    }
-    return Promise.reject(error);
-  }
-);
 
 export default instance;
